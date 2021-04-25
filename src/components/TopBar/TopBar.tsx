@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import {Colors} from "../../styledHelpers/Colors";
 
 import SearchBar from "./TopBarComponents/SearchBar";
-import Menu from "./TopBarComponents/PageManager";
-import CustomerManager from "./TopBarComponents/CustomerManager";
+import LeftManager from "./TopBarComponents/LeftManager";
+import RightManager from "./TopBarComponents/RightManager";
 
 const TopBarWrapper = styled.div`
     background-color: ${Colors.elemBackground};
@@ -26,13 +26,13 @@ const TopBar: FC = () => {
         <TopBarWrapper>
 
             <ContentCell>
-                <Menu/>
+                <LeftManager/>
             </ContentCell>
 
             <SearchBar/>
 
             <ContentCell>
-                <CustomerManager/>
+                <RightManager/>
             </ContentCell>
 
         </TopBarWrapper>

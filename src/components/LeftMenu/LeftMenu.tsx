@@ -2,18 +2,32 @@ import {FC} from 'react';
 import styled from 'styled-components';
 import {Colors} from "../../styledHelpers/Colors";
 
-const menu = styled.div`
+import User from './User';
+import UserTools from './UserTools';
+import NavMenu from './NavMenu';
+
+const Content = styled.div`
+    position: relative;
     margin: 5px;
-    height: 100vh;
+    height: 96vh;
     width: 25%;
+`;
+
+const UserPanel = styled.div`
+    margin: 5px;
+    padding: 5px;
 `;
 
 const LeftMenu : FC = () => {
 
     return(
-        <menu>
-            
-        </menu>
+        <Content>
+            <UserPanel>
+                <User></User>
+                <UserTools></UserTools>
+                <NavMenu></NavMenu>
+            </UserPanel>
+        </Content>
     )
 }
 

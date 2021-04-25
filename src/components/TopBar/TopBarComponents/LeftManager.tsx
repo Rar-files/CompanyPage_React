@@ -11,9 +11,10 @@ const Logo = styled.img`
 
 const PageManagerDiv = styled.div`
     display: flex;
+    align-items: center;
 `;
 
-const PageManager: FC = () => {
+const LeftManager: FC = () => {
     return(
         <PageManagerDiv>
             <Logo src={"/media/logo.png"}/>
@@ -22,4 +23,4 @@ const PageManager: FC = () => {
     )
 }
 
-export default PageManager;
+export default LeftManager;
