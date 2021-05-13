@@ -13,6 +13,7 @@ const Content = styled.div`
 `;
 
 const UserImage = styled.img`
+    border-radius: 30px;
     width: 50px;
 `;
 
@@ -28,7 +29,7 @@ const User : FC = () => {
 
     return(
         <Content>
-            <UserImage src="/media/logo.png"></UserImage>
+            <UserImage src="/media/user.png"></UserImage>
             <UserName>Imię Nazwisko</UserName>
             <UserDescription> opis</UserDescription>
         </Content>
