@@ -1,12 +1,12 @@
 import {FC} from 'react';
 import styled from 'styled-components';
-import {Colors} from "../../../styledHelpers/Colors";
+import {Link} from "react-router-dom";
 
 import ExpandedMenu from "./ExpandedMenu";
 
 const Logo = styled.img`
-    margin: 5px;
-    height: 40px;
+    margin: 10px;
+    height: 38px;
 `;
 
 const PageManagerDiv = styled.div`
@@ -17,7 +17,9 @@ const PageManagerDiv = styled.div`
 const LeftManager: FC = () => {
     return(
         <PageManagerDiv>
-            <Logo src={"/media/logo.png"}/>
+            <Link to="/">
+                <Logo src={"/media/logo.png"}/>
+            </Link>
             <ExpandedMenu/>
         </PageManagerDiv>
     )

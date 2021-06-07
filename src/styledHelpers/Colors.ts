@@ -10,5 +10,7 @@ export const Colors = {
     h2: '#3f465e',
     h3: '#3f465e',
     h4: '#3f465e',
-    hyperlink: '#374ba3', 
+    hyperlink: '#374ba3',
+    text: '#001830',
+    hover: '#484860',
 }

@@ -1,9 +1,11 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import styled from 'styled-components';
 import {Colors} from "../../styledHelpers/Colors";
+import {BrowserRouter as Router,} from "react-router-dom";
 
 import TopBar from "../TopBar/TopBar";
 import LeftMenu from "../LeftMenu/LeftMenu";
+import DynamicPage from "../DynamicPage/DynamicPage"
 
 const Content = styled.div`
     max-width: 1200px;
@@ -26,10 +28,13 @@ const MainPage: FC = () => {
     return (
         <Page>
             <Main>
-                <TopBar/>
-                <Content>
-                    <LeftMenu/>
-                </Content>
+                <Router>
+                    <TopBar/>
+                    <Content>
+                        <LeftMenu/>
+                        <DynamicPage/>
+                    </Content>
+                </Router>
             </Main>
         </Page>
     );

@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import styled from 'styled-components';
-import {Colors} from "../../styledHelpers/Colors";
+import {Colors} from "../../../styledHelpers/Colors";
 
 const Content = styled.div`
     background-color: ${Colors.white};

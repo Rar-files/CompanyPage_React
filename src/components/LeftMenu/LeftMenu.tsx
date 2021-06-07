@@ -1,16 +1,15 @@
 import {FC} from 'react';
 import styled from 'styled-components';
-import {Colors} from "../../styledHelpers/Colors";
 
-import User from './User';
-import UserTools from './UserTools';
-import NavMenu from './NavMenu';
+import User from './components/User';
+import UserTools from './components/UserTools';
+import NavMenu from './components/NavMenu';
 
 const Content = styled.div`
     position: relative;
     margin: 5px;
     height: 96vh;
-    width: 22%;
+    width: 232px;
 `;
 
 const UserPanel = styled.div`

@@ -2,9 +2,9 @@ import {FC} from 'react';
 import styled from 'styled-components';
 import {Colors} from "../../styledHelpers/Colors";
 
-import SearchBar from "./TopBarComponents/SearchBar";
-import LeftManager from "./TopBarComponents/LeftManager";
-import RightManager from "./TopBarComponents/RightManager";
+import SearchBar from "./components/SearchBar";
+import LeftManager from "./components/LeftManager";
+import RightManager from "./components/RightManager";
 
 const TopBarWrapper = styled.div`
     background-color: ${Colors.elemBackground};

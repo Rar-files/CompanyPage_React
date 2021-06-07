@@ -11,9 +11,11 @@ const Content = styled.div`
 const HomeButton = styled.button`
     padding: 8px;
     width: 40px;
+    height: auto;
     border-width: 0px;
     margin: 1px;
     background: none;
+    cursor: pointer;
 `;
 
 const CircleButton = styled(HomeButton)`
@@ -25,14 +27,14 @@ const RightManager: FC = () => {
     return(
         <Content>
             <HomeButton>
-                <img src="./media/icons/house.svg"/>
+                <img src="./media/icons/house.svg" alt=""/>
             </HomeButton>
             <CircleButton>
-                <img src="./media/icons/comments.svg"/>
+                <img src="./media/icons/comments.svg" alt=""/>
             </CircleButton>
             
             <CircleButton>
-                <img src="./media/icons/bell.svg"/>
+                <img src="./media/icons/bell.svg" alt=""/>
             </CircleButton>
         </Content>
     )
