@@ -1,9 +1,9 @@
-import {ChangeEvent, FC, useState, useContext,} from 'react';
+import {ChangeEvent, FC, useState, useEffect} from 'react';
 import useDropdown from 'react-dropdown-hook';
-import MenuElement from '../../BasicPageElements/MenuElement';
-import IMenuElement from "../../../interfaces/MenuElement.interface"
-import {PlatformData, WorkspacesData} from "../../../assets/data/DropdownMenuData";
-
+import MenuElement from '../../../BasicPageElements/MenuElement';
+import IMenuElement from "../../../../interfaces/MenuElement.interface"
+import {PlatformData, WorkspacesData} from "../../../../assets/data/DropdownMenuData";
+import Account from './ExpandedMenuAccount';
 import {
 	DropMenu,
 	DropMenuBtn,
@@ -12,10 +12,9 @@ import {
 	List,
 	Row,
 	SearchBar,
-	MenuSectionName
-} from './styledComponents/ExpandedMenuStyled';
-import { platform } from 'node:os';
-import { element } from 'prop-types';
+	MenuSectionName,
+	AccountSection
+} from './ExpandedMenuStyled';
 
 const ExpandedMenu: FC = () => {
     const [wrapperRef, dropdownOpen, toggleDropdown, closeDropdown] = useDropdown();
@@ -58,7 +57,7 @@ const ExpandedMenu: FC = () => {
 							<img src="/media/icons/arrow-down.svg" alt=""/>
 						</DropMenuBtn>
 
-						<SearchBar placeholder="Search" onChange={(e: ChangeEvent<HTMLInputElement>) => setSearched(e.target.value)}/>
+						<SearchBar placeholder="Filter..." onChange={(e: ChangeEvent<HTMLInputElement>) => setSearched(e.target.value)}/>
 
 						<List>
 							{PlatformTitle}
@@ -68,10 +67,15 @@ const ExpandedMenu: FC = () => {
 							{WorkspacesTitle}
 							
 							{WorkspacesDataBufor}
-							
+						</List>
+
+						<AccountSection>
 							<MenuSectionName>Account</MenuSectionName>
 
 							<ul>
+								<Row>
+									<Account/>
+								</Row>
 								<Row>
 									<MenuElement href="/" srcImg="/media/icons/privacy.svg" elementName="Privacy"/>
 								</Row>
@@ -79,7 +83,7 @@ const ExpandedMenu: FC = () => {
 									<MenuElement href="/" srcImg="/media/icons/settings.svg" elementName="Settings"/>
 								</Row>
 							</ul>
-						</List>
+						</AccountSection>
 					</Menu> 
 				}
 			</div>

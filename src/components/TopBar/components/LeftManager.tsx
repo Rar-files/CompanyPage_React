@@ -2,7 +2,7 @@ import {FC} from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
 
-import ExpandedMenu from "./ExpandedMenu";
+import ExpandedMenu from "./ExpandedMenu/ExpandedMenu";
 
 const Logo = styled.img`
     margin: 10px;

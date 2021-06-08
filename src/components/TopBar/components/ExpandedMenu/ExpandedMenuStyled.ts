@@ -30,25 +30,32 @@ export const Menu = styled.div`
 	border-width: 1px;
 	border-color: ${Colors.grey};
 	border-radius: 4px;
-	margin-top:415px;
+	margin-top:433px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-start;
+	align-items: flex-start;
+	height: 520px;
+`;
+
+export const SearchBar = styled.input`
+	width: 90%;
+	margin: 0px 5px;
 `;
 
 export const List = styled.div`
 	padding:10px;
+	overflow: auto;
 `;
 
 export const Row = styled.li`
 	margin: 4px;
 `;
 
-export const SearchBar = styled.input`
-	width: 90%;
-`;
-
 export const MenuSectionName = styled.span`
 
+`;
+
+export const AccountSection = styled.div`
+	padding:10px;
 `;
