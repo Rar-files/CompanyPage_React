@@ -1,12 +1,10 @@
-import {FC} from 'react';
+import {FC, createContext} from 'react';
 import styled from 'styled-components';
 import {Colors} from "../../styledHelpers/Colors";
-import {BrowserRouter as Router,} from "react-router-dom";
 
 import TopBar from "../TopBar/TopBar";
 import LeftMenu from "../LeftMenu/LeftMenu";
 import DynamicPage from "../DynamicPage/DynamicPage"
-
 const Content = styled.div`
     max-width: 1200px;
     align-items: center;
@@ -24,17 +22,18 @@ const Page = styled.section`
     margin: 5px;
 `;
 
+export const UserProfile = createContext({});
+
 const MainPage: FC = () => {
+
     return (
         <Page>
             <Main>
-                <Router>
-                    <TopBar/>
-                    <Content>
-                        <LeftMenu/>
-                        <DynamicPage/>
-                    </Content>
-                </Router>
+                <TopBar/>
+                <Content>
+                    <LeftMenu/>
+                    <DynamicPage/>
+                </Content>
             </Main>
         </Page>
     );

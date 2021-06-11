@@ -1,6 +1,7 @@
-import styled from 'styled-components';
-import {FC} from 'react';
+import {FC, useContext} from 'react';
 import {Link} from 'react-router-dom';
+import { UserProfile } from "../../../../App";
+import styled from 'styled-components';
 
 const AccountFrame = styled.div`
     margin: 2px;
@@ -27,9 +28,11 @@ const LinkBIO = styled(Link)`
 
 const Account : FC = () => {
 
+    const userData: any = useContext(UserProfile);
+
     return (
         <AccountFrame>
-            <AccountImg src="/media/user.png"/>
+            <AccountImg src={userData ? userData["thumbnailUrl"] : "/media/user.png"}/>
             <AccountData>
                 <Name>
 

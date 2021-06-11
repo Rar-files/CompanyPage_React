@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {fontSize} from '../../styledHelpers/FontSizes';
 import {Link} from "react-router-dom";
 import {Colors} from "../../styledHelpers/Colors"
-import IMenuElement from "../../interfaces/MenuElement.interface";
+import IMenuElement from "../../interfaces/IMenuElement";
 
 const Element = styled.div`
     margin: 2px;

@@ -1,4 +1,4 @@
-import IMenuElement from "../../interfaces/MenuElement.interface";
+import IMenuElement from "../../interfaces/IMenuElement";
 
 export const PlatformData: IMenuElement[] = [
     {

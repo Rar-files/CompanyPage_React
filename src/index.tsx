@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainPage from './components/MainPage/MainPage';
+import App from './App';
 import {Reset} from 'styled-reset';
 
 ReactDOM.render(
@@ -8,7 +8,7 @@ ReactDOM.render(
     <React.StrictMode>
       <Reset/>
     </React.StrictMode>
-    <MainPage/>
+    <App/>
   </>,
   document.getElementById('root')
 );

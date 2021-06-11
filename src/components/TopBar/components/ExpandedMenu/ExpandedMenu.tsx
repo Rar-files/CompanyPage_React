@@ -1,7 +1,7 @@
-import {ChangeEvent, FC, useState, useEffect} from 'react';
+import {ChangeEvent, FC, useState} from 'react';
 import useDropdown from 'react-dropdown-hook';
 import MenuElement from '../../../BasicPageElements/MenuElement';
-import IMenuElement from "../../../../interfaces/MenuElement.interface"
+import IMenuElement from "../../../../interfaces/IMenuElement"
 import {PlatformData, WorkspacesData} from "../../../../assets/data/DropdownMenuData";
 import Account from './ExpandedMenuAccount';
 import {
