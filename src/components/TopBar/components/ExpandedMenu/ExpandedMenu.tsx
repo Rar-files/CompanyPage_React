@@ -1,4 +1,4 @@
-import {ChangeEvent, FC, useState} from 'react';
+import {ChangeEvent, FC, useEffect, useState} from 'react';
 import useDropdown from 'react-dropdown-hook';
 import MenuElement from '../../../BasicPageElements/MenuElement';
 import IMenuElement from "../../../../interfaces/IMenuElement"
@@ -19,12 +19,7 @@ import {
 const ExpandedMenu: FC = () => {
     const [wrapperRef, dropdownOpen, toggleDropdown, closeDropdown] = useDropdown();
 	const [searched, setSearched] = useState("");
-
-	let CurrentElement = <MenuElement href="/" srcImg="/media/icons/house2.svg" elementName="Home"/>;
-	PlatformData.forEach((e) => {
-		if(e.href === window.location.pathname)
-			CurrentElement = <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>
-	});
+	const [currentPath, setCurrentPath] = useState("");
 
 	let PlatformDataBufor = PlatformData.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(searched.toLowerCase()))
 	.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>);
@@ -36,24 +31,44 @@ const ExpandedMenu: FC = () => {
 	if(!(PlatformDataBufor.length === 0))
 		PlatformTitle = <MenuSectionName>Platform</MenuSectionName>;
 
-
 	let WorkspacesTitle;
 	if(!(WorkspacesDataBufor.length === 0))
 		WorkspacesTitle = <MenuSectionName>Workspaces</MenuSectionName>;
+
+	useEffect(() => {
+		setCurrentPath(window.location.pathname);
+	}, [])
+
+	function getElementByPath(path : string){
+		let CurrentElement;
+		PlatformData.forEach((e) => {
+			if(e.href === path){
+				// eslint-disable-next-line react-hooks/exhaustive-deps
+				CurrentElement = <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>
+			}
+		});
+		WorkspacesData.forEach((e) => {
+			if(e.href === path){
+				// eslint-disable-next-line react-hooks/exhaustive-deps
+				CurrentElement = <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>
+			}
+		});
+		return CurrentElement;
+	}
 
 	return (
 		<DropMenu>
 			<div ref={wrapperRef}>
 
                 <DropMenuClosedBtn onClick={toggleDropdown}>
-					{CurrentElement}
+					{getElementByPath(currentPath)}
 					<img src="/media/icons/arrow-down.svg" alt=""/>
                 </DropMenuClosedBtn>
 
 				{dropdownOpen &&
-					<Menu>
-						<DropMenuBtn onClick={closeDropdown}>
-							{CurrentElement}
+					<Menu onClick={closeDropdown}>
+						<DropMenuBtn>
+							{getElementByPath(currentPath)}
 							<img src="/media/icons/arrow-down.svg" alt=""/>
 						</DropMenuBtn>
 

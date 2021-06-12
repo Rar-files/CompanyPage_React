@@ -1,17 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import photoSlice from "../reducers/photoSlice";
-import postsSlice from "../reducers/postsSlice";
-import userSlice from "../reducers/userSlice";
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk'
 
-const store = configureStore({
-    reducer: {
-        user: userSlice,
-        posts: postsSlice,
-        photo: photoSlice
-    }
-});
+import reducers from '../reducers';
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+const store = createStore(reducers, applyMiddleware(thunk));
 
 export default store

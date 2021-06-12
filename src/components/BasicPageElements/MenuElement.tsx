@@ -11,6 +11,7 @@ const Element = styled.div`
     display: flex;
     justify-content: left;
     align-items: center;
+    height: 22px;
 `;
 
 const Icon = styled.img`

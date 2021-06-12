@@ -1,42 +1,24 @@
-import {FC, createContext, useEffect} from 'react';
+import {FC, useEffect} from 'react';
 import {BrowserRouter as Router,} from "react-router-dom";
-import { useAppDispatch, useAppSelector} from './app/hooks';
-import { fetchAllUsers } from "./reducers/userSlice";
-import { fetchAllPosts } from "./reducers/postsSlice";
-import { fetchPhotoByID } from "./reducers/photoSlice";
+import { useDispatch} from "react-redux";
 
 import MainPage from './components/MainPage/MainPage'
+import { getUserByID } from './app/actions/userActions';
 
-export const UserProfile = createContext({});
+type GetUser = ReturnType<typeof getUserByID>
+
 
 const App: FC = () => {
-    const dispatch = useAppDispatch();
-    const { user } = useAppSelector((state) => state.user)
-    const { posts } = useAppSelector((state) => state.posts)
-    const { photo } = useAppSelector((state) => state.photo)
 
-    const userObject: object = {
-        ...user,
-        ...posts,
-        ...photo 
-      } 
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchAllUsers());
-        dispatch(fetchAllPosts());
-
-        const promise = dispatch(fetchPhotoByID(1))
-        return () => {
-            promise.abort();
-        }
+        dispatch<GetUser>(getUserByID(1));
     }, [dispatch]);
-    
 
     return (
         <Router>
-            <UserProfile.Provider value={userObject}>
-                <MainPage/>
-            </UserProfile.Provider>
+            <MainPage/>
         </Router>
     );
 }

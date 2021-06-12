@@ -1,7 +1,9 @@
-import {FC, useContext} from 'react';
+import {FC} from 'react';
+import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
-import { UserProfile } from "../../../../App";
 import styled from 'styled-components';
+import { IState } from '../../../../reducers';
+import { IUsersReducer } from '../../../../reducers/userReducers';
 
 const AccountFrame = styled.div`
     margin: 2px;
@@ -27,15 +29,16 @@ const LinkBIO = styled(Link)`
 `;
 
 const Account : FC = () => {
-
-    const userData: any = useContext(UserProfile);
+    const {user} = useSelector<IState, IUsersReducer>(state => ({
+        ...state.users
+    }))
 
     return (
         <AccountFrame>
-            <AccountImg src={userData ? userData["thumbnailUrl"] : "/media/user.png"}/>
+            <AccountImg src={"/media/user.png"}/>
             <AccountData>
                 <Name>
-
+                    {user.name}
                 </Name>
                 <LinkBIO to="/"/>
             </AccountData>

@@ -4,13 +4,14 @@ import {
     Route,
   } from "react-router-dom";
 
+import Home from "./components/Home";
+
 
 const DynamicPage : FC = () =>{
     return(
         <Switch>
-            <Route path="/test">
-            </Route>
             <Route path="/">
+                <Home/>
             </Route>
         </Switch>
 
