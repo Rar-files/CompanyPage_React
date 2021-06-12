@@ -1,12 +1,12 @@
 import IUser, {emptyUser} from '../interfaces/IUser';
 import * as actionTypes from "../app/actions/actionTypes/userTypes";
 
-export interface IUsersReducer {
+export interface IUserReducers {
     usersList: IUser[];
     user: IUser;
 }
 
-const initialState = (): IUsersReducer => ({
+const initialState = (): IUserReducers => ({
     usersList: [],
     user: emptyUser,
 })

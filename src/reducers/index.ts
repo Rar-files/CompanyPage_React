@@ -1,11 +1,14 @@
 import { combineReducers } from "redux";
 
-import users, {IUsersReducer} from './userReducers';
+import users, {IUserReducers} from './userReducers';
+import photo, { IPhotoReducers } from "./photoReducers";
 
 export default combineReducers({
-    users
+    users,
+    photo
 })
 
 export interface IState{
-    users: IUsersReducer;
+    users: IUserReducers;
+    photo: IPhotoReducers
 }

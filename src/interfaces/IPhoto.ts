@@ -6,4 +6,12 @@ interface IPhoto {
     thumbnailUrl: string;
 }
 
+export const emptyPhoto = {
+    albumId: 0,
+    id: 0,
+    title: '',
+    url: '',
+    thumbnailUrl: ''
+}
+
 export default IPhoto;

@@ -17,6 +17,10 @@ class thisAPIUser implements IUserAPI{
 }
 
 class thisAPIPhoto implements IPhotoAPI{
+    fetchAll(): Promise<Response> {
+        const fetchLink = `${APILink}/photos/`;
+        return fetch(fetchLink);
+    }
     fetchByID(ID: number) : Promise<Response>{
         const fetchLink = `${APILink}/photos/${ID}`;
         return fetch(fetchLink);
@@ -24,6 +28,10 @@ class thisAPIPhoto implements IPhotoAPI{
 }
 
 class thisAPIPosts implements IPostsAPI{
+    fetchByID(ID: number): Promise<Response> {
+        const fetchLink = `${APILink}/posts/${ID}`;
+        return fetch(fetchLink);
+    }
     fetchAll() : Promise<Response>{
         const fetchLink = `${APILink}/posts/`;
         return fetch(fetchLink);

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { IState } from '../../../../reducers';
-import { IUsersReducer } from '../../../../reducers/userReducers';
+import { IUserReducers } from '../../../../reducers/userReducers';
 
 const AccountFrame = styled.div`
     margin: 2px;
@@ -29,7 +29,7 @@ const LinkBIO = styled(Link)`
 `;
 
 const Account : FC = () => {
-    const {user} = useSelector<IState, IUsersReducer>(state => ({
+    const {user} = useSelector<IState, IUserReducers>(state => ({
         ...state.users
     }))
 
