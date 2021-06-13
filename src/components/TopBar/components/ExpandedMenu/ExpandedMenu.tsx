@@ -1,7 +1,6 @@
 import {ChangeEvent, FC, useEffect, useState} from 'react';
 import useDropdown from 'react-dropdown-hook';
-import MenuElement from '../../../BasicPageElements/MenuElement';
-import IMenuElement from "../../../../interfaces/IMenuElement"
+import MenuElement, {IMenuElement} from '../../../BasicGlobalElements/MenuElement';
 import {PlatformData, WorkspacesData} from "../../../../assets/data/DropdownMenuData";
 import Account from './ExpandedMenuAccount';
 import {
@@ -18,13 +17,15 @@ import {
 
 const ExpandedMenu: FC = () => {
     const [wrapperRef, dropdownOpen, toggleDropdown, closeDropdown] = useDropdown();
-	const [searched, setSearched] = useState("");
+	const [filtred, setFiltred] = useState("");
 	const [currentPath, setCurrentPath] = useState("");
 
-	let PlatformDataBufor = PlatformData.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(searched.toLowerCase()))
-	.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>);
+	let PlatformDataBufor = PlatformData
+		.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(filtred.toLowerCase()))
+		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>);
 
-	let WorkspacesDataBufor = WorkspacesData.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(searched.toLowerCase()))
+	let WorkspacesDataBufor = WorkspacesData
+		.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(filtred.toLowerCase()))
 		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>);
 
 	let PlatformTitle;
@@ -72,7 +73,7 @@ const ExpandedMenu: FC = () => {
 							<img src="/media/icons/arrow-down.svg" alt=""/>
 						</DropMenuBtn>
 
-						<SearchBar placeholder="Filter..." onChange={(e: ChangeEvent<HTMLInputElement>) => setSearched(e.target.value)}/>
+						<SearchBar placeholder="Filter..." onChange={(e: ChangeEvent<HTMLInputElement>) => setFiltred(e.target.value)}/>
 
 						<List>
 							{PlatformTitle}

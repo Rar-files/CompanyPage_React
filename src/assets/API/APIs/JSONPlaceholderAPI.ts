@@ -11,14 +11,14 @@ class thisAPIUser implements IUserAPI{
         return fetch(fetchLink);
     }
     fetchAll() : Promise<Response>{
-        const fetchLink = `${APILink}/users/`;
+        const fetchLink = `${APILink}/users`;
         return fetch(fetchLink);
     }
 }
 
 class thisAPIPhoto implements IPhotoAPI{
     fetchAll(): Promise<Response> {
-        const fetchLink = `${APILink}/photos/`;
+        const fetchLink = `${APILink}/photos`;
         return fetch(fetchLink);
     }
     fetchByID(ID: number) : Promise<Response>{
@@ -33,7 +33,7 @@ class thisAPIPosts implements IPostsAPI{
         return fetch(fetchLink);
     }
     fetchAll() : Promise<Response>{
-        const fetchLink = `${APILink}/posts/`;
+        const fetchLink = `${APILink}/posts`;
         return fetch(fetchLink);
     }
 }

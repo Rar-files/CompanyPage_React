@@ -2,7 +2,7 @@ import {FC} from 'react';
 import styled from 'styled-components';
 import {Colors} from "../../../styledHelpers/Colors";
 
-import MenuElement from '../../BasicPageElements/MenuElement';
+import MenuElement from '../../BasicGlobalElements/MenuElement';
 
 const Content = styled.div`
     background-color: ${Colors.white};
@@ -51,7 +51,7 @@ const UserTools : FC = () =>{
                 </NavBtn>
             </Row>
             <Row>
-                <MenuElement href="/" srcImg="/media/icons/ecosystem.svg" elementName="Your Publications"/>
+                <MenuElement href="/publications" srcImg="/media/icons/ecosystem.svg" elementName="Your Publications"/>
                 <NavBtn>
                     <Icon alt="" src="/media/icons/plus.svg"/>
                 </NavBtn>

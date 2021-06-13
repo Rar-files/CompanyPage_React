@@ -3,10 +3,12 @@ import * as actionTypes from '../app/actions/actionTypes/photoTypes';
 
 export interface IPhotoReducers {
     photosList: IPhoto[];
+    photo: IPhoto;
 }
 
 const initialState = () : IPhotoReducers => ({
-    photosList: []
+    photosList: [],
+    photo: emptyPhoto
 })
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -18,7 +20,16 @@ export default (state = initialState(), action: any) => {
 
             return{
                 ...state,
-                photo: data.photosList
+                photosList: data.photosList
+            }
+        }
+
+        case actionTypes.GET_PHOTO: {
+            const data: actionTypes.IPhotoTypes['GET_PHOTO'] = action;
+
+            return{
+                ...state,
+                photo: data.photo
             }
         }
 

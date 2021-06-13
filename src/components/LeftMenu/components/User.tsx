@@ -1,5 +1,9 @@
 import {FC} from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { IState } from '../../../reducers';
+import { IPhotoReducers } from '../../../reducers/photoReducers';
+import { IUserReducers } from '../../../reducers/userReducers';
 import {Colors} from "../../../styledHelpers/Colors";
 
 const Content = styled.div`
@@ -26,12 +30,19 @@ const UserDescription = styled.p`
 `;
 
 const User : FC = () => {
+    const {user} = useSelector<IState, IUserReducers>(state => ({
+        ...state.users
+    }))
+
+    const {photo} = useSelector<IState, IPhotoReducers>(state => ({
+        ...state.photos
+    }))
 
     return(
         <Content>
-            <UserImage src="/media/user.png"></UserImage>
-            <UserName>Imię Nazwisko</UserName>
-            <UserDescription> opis</UserDescription>
+            <UserImage src={photo.url} alt="Img"></UserImage>
+            <UserName>{user.name}</UserName>
+            <UserDescription>{user.company.name}</UserDescription>
         </Content>
     )
 }
