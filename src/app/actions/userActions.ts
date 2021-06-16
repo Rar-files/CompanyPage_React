@@ -13,11 +13,9 @@ export const getUsers = (): Promise<IUser[]> => (async (dispatch: Dispatch) => {
     });
 }) as any;
 
-export const getUserByID = (ID: number): Promise<IUser> => (async (dispatch: Dispatch) => {
-    const response = await API.user.fetchByID(ID);
-    const user = await response.json();
+export const getCurrentUserID = (userID: number): Promise<IUser> => ((dispatch: Dispatch) => {
     dispatch({
-        type: actionTypes.GET_USER,
-        user
+        type: actionTypes.GET_CURRENT_USER_ID,
+        userID
     });
 }) as any;

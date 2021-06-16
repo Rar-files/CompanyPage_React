@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import styled from 'styled-components';
 
-import MenuElement from '../../BasicGlobalElements/MenuElement';
+import MenuElement from '../../Common/MenuElement';
 
 const Content = styled.div`
     padding: 2px;

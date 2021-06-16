@@ -5,6 +5,7 @@ import { IState } from '../../../reducers';
 import { IPhotoReducers } from '../../../reducers/photoReducers';
 import { IUserReducers } from '../../../reducers/userReducers';
 import {Colors} from "../../../styledHelpers/Colors";
+import Loading from '../../Common/Loading';
 
 const Content = styled.div`
     background-color: ${Colors.white};
@@ -30,21 +31,26 @@ const UserDescription = styled.p`
 `;
 
 const User : FC = () => {
-    const {user} = useSelector<IState, IUserReducers>(state => ({
+    const {userID, usersList} = useSelector<IState, IUserReducers>(state => ({
         ...state.users
     }))
 
-    const {photo} = useSelector<IState, IPhotoReducers>(state => ({
+    const {photosList} = useSelector<IState, IPhotoReducers>(state => ({
         ...state.photos
     }))
 
-    return(
+    try{
+        return(
         <Content>
-            <UserImage src={photo.url} alt="Img"></UserImage>
-            <UserName>{user.name}</UserName>
-            <UserDescription>{user.company.name}</UserDescription>
+            <UserImage src={photosList[userID].url} alt="Img"></UserImage>
+            <UserName>{usersList[userID].name}</UserName>
+            <UserDescription>{usersList[userID].company.name}</UserDescription>
         </Content>
-    )
+        )
+    }
+    catch{
+        return <Loading/>
+    }
 }
 
 export default User;

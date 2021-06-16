@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import styled from "styled-components";
-import { IPostType } from '../../../../assets/data/PostTypes';
-import IPost from "../../../../interfaces/IPost";
+import { IPostType } from '../../../../../../assets/data/PostTypes';
+import IPost from "../../../../../../interfaces/IPost";
 
 export interface IPostElement{
     post: IPost;
@@ -38,36 +38,38 @@ const TypeIcon = styled.img`
 
 const SeperatorPath = "media/icons/seperator.svg"
 
-const PostElement : FC<IPostElement> = ({post,postType,companyName,updateTime,updateBy}) => 
-    <aside>
+const PostElement : FC<IPostElement> = (props: IPostElement) => {
+
+    return (
         <Post>
             <Title>
-                {post.title}
+                {props.post.title}
             </Title>
             <Body>
-                {post.body}
+                {props.post.body}
             </Body>
             <PostTools>
                 <PostToolsConttentBlock>
-                    {companyName}
+                    {props.companyName}
                 </PostToolsConttentBlock>
 
                 <img src={SeperatorPath} alt = "*"/>
 
                 <PostToolsConttentBlock>
-                    <TypeIcon src={postType.icnSrc}/>
-                    {postType.typeName}
+                    <TypeIcon src={props.postType.icnSrc}/>
+                    {props.postType.typeName}
                 </PostToolsConttentBlock>
 
                 <img src={SeperatorPath} alt = "*"/>
 
                 <PostToolsConttentBlock>
                     {"Updated"}
-                    { (updateTime !== undefined) ? " " + updateTime + " ago" : ""}
-                    { (updateBy !== undefined) ? " by " + updateBy : ""}
+                    { (props.updateTime !== undefined) ? " " + props.updateTime + " ago" : ""}
+                    { (props.updateBy !== undefined) ? " by " + props.updateBy : ""}
                 </PostToolsConttentBlock>
             </PostTools>
         </Post>
-    </aside>;
+    )
+}
 
 export default PostElement;

@@ -3,12 +3,12 @@ import * as actionTypes from "../app/actions/actionTypes/userTypes";
 
 export interface IUserReducers {
     usersList: IUser[];
-    user: IUser;
+    userID: number;
 }
 
 const initialState = (): IUserReducers => ({
     usersList: [],
-    user: emptyUser,
+    userID: 1,
 })
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -24,12 +24,12 @@ export default (state = initialState(), action: any) => {
             }
         }
 
-        case actionTypes.GET_USER: {
-            const data: actionTypes.IUserTypes['GET_USER'] = action;
+        case actionTypes.GET_CURRENT_USER_ID: {
+            const data: actionTypes.IUserTypes['GET_CURRENT_USER_ID'] = action;
 
             return {
                 ...state,
-                user: data.user
+                user: data.userID
             }
         }
 

@@ -1,6 +1,6 @@
 import {ChangeEvent, FC, useEffect, useState} from 'react';
 import useDropdown from 'react-dropdown-hook';
-import MenuElement, {IMenuElement} from '../../../BasicGlobalElements/MenuElement';
+import MenuElement, {IMenuElement} from '../../../Common/MenuElement';
 import {PlatformData, WorkspacesData} from "../../../../assets/data/DropdownMenuData";
 import Account from './ExpandedMenuAccount';
 import {
@@ -22,11 +22,11 @@ const ExpandedMenu: FC = () => {
 
 	let PlatformDataBufor = PlatformData
 		.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(filtred.toLowerCase()))
-		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>);
+		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName} key={e.id}/>);
 
 	let WorkspacesDataBufor = WorkspacesData
 		.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(filtred.toLowerCase()))
-		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>);
+		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName} key={e.id}/>);
 
 	let PlatformTitle;
 	if(!(PlatformDataBufor.length === 0))

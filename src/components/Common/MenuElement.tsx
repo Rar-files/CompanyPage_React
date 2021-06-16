@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {Colors} from "../../styledHelpers/Colors"
 
 export interface IMenuElement {
+    id?: number;
     srcImg: string;
     elementName: string;
     href: string;
@@ -46,14 +47,16 @@ const ElementLink = styled(Link)`
     }
 `;
 
-const MenuElement : FC<IMenuElement> = ({href, srcImg, elementName}) =>
-    <aside>
-        <ElementLink to={href}>
+const MenuElement : FC<IMenuElement> = (props : IMenuElement) => {
+
+    return(
+        <ElementLink to={props.href}>
             <Element>
-                <Icon src={srcImg}></Icon>
-                <Name>{elementName}</Name>
+                <Icon src={props.srcImg}></Icon>
+                <Name>{props.elementName}</Name>
             </Element>
         </ElementLink>
-    </aside>
+    )
+}
 
 export default MenuElement;

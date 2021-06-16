@@ -6,7 +6,7 @@ import IPost from "../../interfaces/IPost"
 
 export const getPosts = (): Promise<IPost[]> => (async (dispatch: Dispatch) => {
     const response = await API.posts.fetchAll();
-    const postsList = response.json();
+    const postsList = await response.json();
     dispatch({
         type: actionTypes.GET_POSTS,
         postsList

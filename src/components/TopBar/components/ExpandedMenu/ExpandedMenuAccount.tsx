@@ -6,6 +6,7 @@ import { IState } from '../../../../reducers';
 import { IPhotoReducers } from '../../../../reducers/photoReducers';
 import { IUserReducers } from '../../../../reducers/userReducers';
 import {fontSize} from '../../../../styledHelpers/FontSizes';
+import Loading from '../../../Common/Loading';
 
 const AccountFrame = styled.div`
     margin: 2px;
@@ -33,27 +34,32 @@ const LinkBIO = styled(Link)`
 `;
 
 const Account : FC = () => {
-    const {user} = useSelector<IState, IUserReducers>(state => ({
+    const {userID, usersList} = useSelector<IState, IUserReducers>(state => ({
         ...state.users
     }))
 
-    const {photo} = useSelector<IState, IPhotoReducers>(state => ({
+    const {photosList} = useSelector<IState, IPhotoReducers>(state => ({
         ...state.photos
     }))
 
-    return (
+    try{
+        return (
         <AccountFrame>
-            <AccountImg src={photo.url} alt="Img"/>
+            <AccountImg src={photosList[userID].url} alt="Img"/>
             <AccountData>
                 <Name>
-                    {user.name}
+                    {usersList[userID].name}
                 </Name>
-                <LinkBIO to={"/user?"+user.id}>
+                <LinkBIO to={"/user?"+usersList[userID].id}>
                     See profile
                 </LinkBIO>
             </AccountData>
         </AccountFrame>
-    )
+        )
+    }
+    catch{
+        return <Loading/>
+    }
 }
 
 export default Account;

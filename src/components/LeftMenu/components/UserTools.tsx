@@ -2,7 +2,7 @@ import {FC} from 'react';
 import styled from 'styled-components';
 import {Colors} from "../../../styledHelpers/Colors";
 
-import MenuElement from '../../BasicGlobalElements/MenuElement';
+import MenuElement from '../../Common/MenuElement';
 
 const Content = styled.div`
     background-color: ${Colors.white};
