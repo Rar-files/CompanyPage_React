@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import styled from 'styled-components';
 import {Colors} from "../../../styledHelpers/Colors";
+import { fontSize } from '../../../styledHelpers/FontSizes';
 
 import MenuElement from '../../Common/MenuElement';
 
@@ -22,6 +23,7 @@ const Row = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: ${Colors.text};
 `;
 
 const NavBtn = styled.button`

@@ -7,7 +7,9 @@ const SearchBarDiv = styled.label`
     vertical-align: center;
     width: 500px;
     height: 30px;
-    border-color: ${Colors.grey};
+    border-color: ${Colors.lightGrey};
+    border-radius: 4px;
+    box-shadow: 0px 0px 6px lightgray;
     border-style: solid;
     border-width: 1px;
     display: flex;

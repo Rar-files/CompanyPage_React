@@ -12,8 +12,10 @@ import {
 	Row,
 	SearchBar,
 	MenuSectionName,
-	AccountSection
+	AccountSection,
+	MenuDataTitle
 } from './ExpandedMenuStyled';
+
 
 const ExpandedMenu: FC = () => {
     const [wrapperRef, dropdownOpen, toggleDropdown, closeDropdown] = useDropdown();
@@ -76,11 +78,15 @@ const ExpandedMenu: FC = () => {
 						<SearchBar placeholder="Filter..." onChange={(e: ChangeEvent<HTMLInputElement>) => setFiltred(e.target.value)}/>
 
 						<List>
-							{PlatformTitle}
+							<MenuDataTitle>
+								{PlatformTitle}
+							</MenuDataTitle>
 
 							{PlatformDataBufor}
 							
-							{WorkspacesTitle}
+							<MenuDataTitle>
+								{WorkspacesTitle}
+							</MenuDataTitle>
 							
 							{WorkspacesDataBufor}
 						</List>

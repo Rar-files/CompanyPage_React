@@ -9,7 +9,7 @@ const Content = styled.div`
     position: relative;
     margin: 5px;
     height: 96vh;
-    width: 232px;
+    width: 296px;
 `;
 
 const UserPanel = styled.div`

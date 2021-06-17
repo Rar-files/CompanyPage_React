@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {Colors} from "../../../../styledHelpers/Colors";
+import { fontSize } from '../../../../styledHelpers/FontSizes';
 
 export const DropMenu = styled.div`
 	position: absolute;
@@ -58,4 +59,9 @@ export const MenuSectionName = styled.span`
 
 export const AccountSection = styled.div`
 	padding:10px;
+`;
+
+export const MenuDataTitle = styled.div`
+	font-size: ${fontSize[14]};
+	color: ${Colors.comment}
 `;

@@ -33,6 +33,7 @@ const UserName = styled.p`
 const UserDescription = styled.p`
     margin: 5px;
     font-size: ${fontSize[14]};
+    color: ${Colors.text};
 `;
 
 const User : FC = () => {

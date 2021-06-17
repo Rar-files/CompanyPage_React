@@ -1,5 +1,6 @@
 import {FC} from 'react';
 import styled from 'styled-components';
+import { Colors } from '../../../styledHelpers/Colors';
 
 import MenuElement from '../../Common/MenuElement';
 
@@ -9,6 +10,7 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-star;
+    color: ${Colors.text};
 `;
 
 const NavMenu : FC = () => {

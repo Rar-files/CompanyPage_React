@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { IState } from '../../../../reducers';
 import { IPhotoReducers } from '../../../../reducers/photoReducers';
 import { IUserReducers } from '../../../../reducers/userReducers';
+import { Colors } from '../../../../styledHelpers/Colors';
 import {fontSize} from '../../../../styledHelpers/FontSizes';
 import Loading from '../../../Common/Loading';
 
@@ -26,11 +27,28 @@ const AccountData = styled.div`
 `;
 
 const Name = styled.span`
-
+    font-size: ${fontSize[14]};
+    margin-bottom: 2px;
 `;
 
 const LinkBIO = styled(Link)`
-    font-size: ${fontSize['12']};
+    font-size: ${fontSize[12]};
+    &:link{
+        text-decoration: none;
+        color: ${Colors.text};
+    }
+    &:visited{
+        text-decoration: none;
+        color: ${Colors.text};
+    }
+    &:hover{
+        text-decoration: none;
+        color: ${Colors.textAccent};
+    }
+    &:active{
+        text-decoration: none;
+        color: ${Colors.text};
+    }
 `;
 
 const Account : FC = () => {

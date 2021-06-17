@@ -38,6 +38,8 @@ const Body = styled.span`
     width: 100%;
     margin: 4px;
     font-size: ${fontSize[12]};
+    color: ${Colors.text};
+    line-height: normal;
 `;
 
 const PostTools = styled.div`
@@ -46,12 +48,16 @@ const PostTools = styled.div`
     align-items: center;
     margin: 4px;
     font-size: ${fontSize[10]};
-    color: ${Colors.grey};
+    color: ${Colors.text};
 `;
 
 const PostToolsConttentBlock = styled.span`
     display: flex;
     align-items: center;
+`;
+
+const PostComment = styled(PostToolsConttentBlock)`
+    color: ${Colors.comment};
 `;
 
 const TypeIcon = styled.img`
@@ -63,7 +69,7 @@ const TypeIcon = styled.img`
 const Seperator = styled.div`
     height: 4px;
     width: 4px;
-    margin: 4px;
+    margin: 4px 10px;
     background-color: ${Colors.accent};
     border-radius: 50%;
 `;
@@ -102,11 +108,11 @@ const PostElement : FC<IPostElement> = (props: IPostElement) => {
 
                     <Seperator/>
 
-                    <PostToolsConttentBlock>
+                    <PostComment>
                         {"Updated"}
                         { (props.updateTime !== undefined) ? " " +  TimeFormater.format(Math.round((props.updateTime.getTime() - Date.now()) / (1000 * 3600 * 24)), 'days') : ""}
                         { (usersList[props.post.userId].name !== undefined) ? " by " + usersList[props.post.userId].name : ""}
-                    </PostToolsConttentBlock>
+                    </PostComment>
                 </PostTools>
             </Post>
         )
