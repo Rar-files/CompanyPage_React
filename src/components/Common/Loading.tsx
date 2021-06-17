@@ -21,8 +21,8 @@ const bounced = keyframes`
 `;
 
 const Bounce = styled.div`
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     margin: 2px;
     background-color: ${Colors.accent};
     display: inline-block;

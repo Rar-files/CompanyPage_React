@@ -39,7 +39,7 @@ const ElementLink = styled(Link)`
     }
     &:hover{
         text-decoration: none;
-        color: ${Colors.hover};
+        color: ${Colors.accent};
     }
     &:active{
         text-decoration: none;

@@ -4,10 +4,10 @@ import {Colors} from "../../styledHelpers/Colors";
 
 import TopBar from "../TopBar/TopBar";
 import LeftMenu from "../LeftMenu/LeftMenu";
-import DynamicPage from "../Views/Views"
+import Views from "../Views/Views"
+
 const Content = styled.div`
-    max-width: 1200px;
-    align-items: center;
+    width: 100%;
     display: flex;
     align-items: flex-start;
 `;
@@ -16,6 +16,7 @@ const Main = styled.section`
     background-color: ${Colors.pageBackground};
     width: 100%;
     height: 99.4vh;
+    font-family: 'Roboto';
 `;
 
 const Page = styled.section`
@@ -35,7 +36,7 @@ const MainPage: FC = () => {
                 <TopBar/>
                 <Content>
                     <LeftMenu/>
-                    <DynamicPage/>
+                    <Views/>
                 </Content>
             </Main>
         </Page>

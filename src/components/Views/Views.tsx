@@ -9,6 +9,7 @@ import Home from "./views/Home/Home";
 
 const View = styled.div`
     margin-top: 20px;
+    margin-right: 40px;
     height: 100%;
     width: 100%;
 `;

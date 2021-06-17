@@ -19,7 +19,7 @@ const HomeButton = styled.button`
 `;
 
 const CircleButton = styled(HomeButton)`
-    border-radius: 20px;
+    border-radius: 50%;
     background-color: ${Colors.lightGrey};
 `;
 

@@ -1,75 +1,119 @@
 import {FC} from 'react';
+import { useSelector } from 'react-redux';
 import styled from "styled-components";
 import { IPostType } from '../../../../../../assets/data/PostTypes';
 import IPost from "../../../../../../interfaces/IPost";
+import { IState } from '../../../../../../reducers';
+import { IUserReducers } from '../../../../../../reducers/userReducers';
+import { Colors } from '../../../../../../styledHelpers/Colors';
+import { fontSize } from '../../../../../../styledHelpers/FontSizes';
+import Loading from '../../../../../Common/Loading';
 
 export interface IPostElement{
     post: IPost;
     postType: IPostType;
     companyName: string;
-    updateTime?: string;
-    updateBy?: string;
+    updateTime?: Date;
 }
 
 const Post = styled.div`
+    padding: 2px 8px;
+    margin-top: 6px;
     display: flex;
     flex-direction: column;
+    background-color: ${Colors.white};
+    border-radius: 4px;
+    box-shadow: 2px 2px 6px lightgray;
 `;
 
 const Title = styled.span`
     width: 100%;
+    margin: 4px;
+    text-transform:capitalize;
+    font-size: ${fontSize[14]};
+    color: ${Colors.textAccent};
 `;
 
 const Body = styled.span`
     width: 100%;
+    margin: 4px;
+    font-size: ${fontSize[12]};
 `;
 
 const PostTools = styled.div`
     width: 100%;
     display: flex;
+    align-items: center;
+    margin: 4px;
+    font-size: ${fontSize[10]};
+    color: ${Colors.grey};
 `;
 
 const PostToolsConttentBlock = styled.span`
+    display: flex;
+    align-items: center;
 `;
 
 const TypeIcon = styled.img`
-
+    height: 12px;
+    width: auto;
+    margin: 0px 2px;
 `;
 
-const SeperatorPath = "media/icons/seperator.svg"
+const Seperator = styled.div`
+    height: 4px;
+    width: 4px;
+    margin: 4px;
+    background-color: ${Colors.accent};
+    border-radius: 50%;
+`;
 
 const PostElement : FC<IPostElement> = (props: IPostElement) => {
 
-    return (
-        <Post>
-            <Title>
-                {props.post.title}
-            </Title>
-            <Body>
-                {props.post.body}
-            </Body>
-            <PostTools>
-                <PostToolsConttentBlock>
-                    {props.companyName}
-                </PostToolsConttentBlock>
+    const TimeFormater = new Intl.RelativeTimeFormat('en', { style: 'narrow' });
 
-                <img src={SeperatorPath} alt = "*"/>
+    const {usersList} = useSelector<IState, IUserReducers>(state => ({
+        ...state.users
+    }))
 
-                <PostToolsConttentBlock>
-                    <TypeIcon src={props.postType.icnSrc}/>
-                    {props.postType.typeName}
-                </PostToolsConttentBlock>
 
-                <img src={SeperatorPath} alt = "*"/>
+    try{
+        return (
+            <Post>
+                <Title>
+                    {props.post.title}
+                </Title>
 
-                <PostToolsConttentBlock>
-                    {"Updated"}
-                    { (props.updateTime !== undefined) ? " " + props.updateTime + " ago" : ""}
-                    { (props.updateBy !== undefined) ? " by " + props.updateBy : ""}
-                </PostToolsConttentBlock>
-            </PostTools>
-        </Post>
-    )
+                <Body>
+                    {props.post.body}
+                </Body>
+
+                <PostTools>
+                    <PostToolsConttentBlock>
+                        {props.companyName}
+                    </PostToolsConttentBlock>
+
+                    <Seperator/>
+
+                    <PostToolsConttentBlock>
+                        <TypeIcon src={props.postType.icnSrc}/>
+                        {props.postType.typeName}
+                    </PostToolsConttentBlock>
+
+                    <Seperator/>
+
+                    <PostToolsConttentBlock>
+                        {"Updated"}
+                        { (props.updateTime !== undefined) ? " " +  TimeFormater.format(Math.round((props.updateTime.getTime() - Date.now()) / (1000 * 3600 * 24)), 'days') : ""}
+                        { (usersList[props.post.userId].name !== undefined) ? " by " + usersList[props.post.userId].name : ""}
+                    </PostToolsConttentBlock>
+                </PostTools>
+            </Post>
+        )
+    }
+    catch{
+        return <Loading/>
+    }
 }
 
 export default PostElement;

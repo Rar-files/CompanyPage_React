@@ -3,17 +3,17 @@ export interface IPostType{
     icnSrc: string;
 }
 
-export const PostTypes = {
-    test:{
-        typeName: "test",
-        icnSrc: "/media/user.png",
+export const PostTypes = [
+    {
+        typeName: "Corporate",
+        icnSrc: "/media/icons/entities.svg",
     },
-    test2:{
-        typeName: "test",
-        icnSrc: "/media/user.png",
+    {
+        typeName: "Supplier contract",
+        icnSrc: "/media/icons/publications.svg",
     },
-    test3:{
-        typeName: "test",
-        icnSrc: "/media/user.png",
-    },
-}
+    {
+        typeName: "Client contract",
+        icnSrc: "/media/icons/people.svg",
+    }
+]

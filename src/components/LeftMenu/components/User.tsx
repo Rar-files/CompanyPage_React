@@ -5,6 +5,7 @@ import { IState } from '../../../reducers';
 import { IPhotoReducers } from '../../../reducers/photoReducers';
 import { IUserReducers } from '../../../reducers/userReducers';
 import {Colors} from "../../../styledHelpers/Colors";
+import { fontSize } from '../../../styledHelpers/FontSizes';
 import Loading from '../../Common/Loading';
 
 const Content = styled.div`
@@ -24,10 +25,14 @@ const UserImage = styled.img`
 
 const UserName = styled.p`
     margin: 5px;
+    color: ${Colors.textAccent};
+    font-weight: bold;
+    font-size: ${fontSize[16]};
 `;
 
 const UserDescription = styled.p`
     margin: 5px;
+    font-size: ${fontSize[14]};
 `;
 
 const User : FC = () => {

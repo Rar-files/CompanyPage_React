@@ -19,6 +19,8 @@ const PostsDiv = styled.div`
 
 `;
 
+// 
+
 const ResumeYourWorkPosts : FC<IResumeYourWorkPosts> = (props: IResumeYourWorkPosts) => {
 
     const {postsList} = useSelector<IState, IPostReducers>(state => ({
@@ -30,7 +32,7 @@ const ResumeYourWorkPosts : FC<IResumeYourWorkPosts> = (props: IResumeYourWorkPo
             {postsList
                 .filter((element: IPost) => element.title.toLowerCase().includes(props.filterValue.toLowerCase()))
                 .filter((element: IPost) => props.posts.from < element.id && element.id <= props.posts.to)
-	            .map((post: IPost) => <Post post={post} postType={PostTypes.test} companyName="company" key={post.id}/>)}
+	            .map((post: IPost) => <Post post={post} postType={PostTypes[post.id%3]} updateTime={new Date(2021,4,post.id%30+1)} companyName="Company" key={post.id}/>)}
         </PostsDiv>
     );
 }
