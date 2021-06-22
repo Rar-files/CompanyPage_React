@@ -16,9 +16,9 @@ const Home : FC = () => {
 
     return (
         <HomeDiv>
-            {/* <Publications/> */}
+            <Publications/>
             <Workspaces/>
-            <ResumeYourWork/>
+            {/* <ResumeYourWork/> */}
         </HomeDiv>
     );
 }

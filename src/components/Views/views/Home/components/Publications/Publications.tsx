@@ -8,8 +8,14 @@ import LatestPublications from "./LatestPublications";
 import MainPost from "./MainPost";
 
 const MainDiv = styled.div`
+    height: 280px;
     width: 100%;
-    background-color: red;
+    display: flex;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    box-shadow: 0px 0px 10px lightgray;
 `;
 
 const Publications : FC = () => {
@@ -19,7 +25,7 @@ const Publications : FC = () => {
 
     return (
         <MainDiv>
-            <MainPost post={postsList[0]} updateDate="7 jan 2020" updateBy={1}/>
+            <MainPost post={postsList[1]} updateDate="7 jan 2020" updateBy={1}/>
             <LatestPublications/>
         </MainDiv>
     );

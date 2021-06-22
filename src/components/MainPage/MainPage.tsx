@@ -6,29 +6,26 @@ import TopBar from "../TopBar/TopBar";
 import LeftMenu from "../LeftMenu/LeftMenu";
 import Views from "../Views/Views"
 
+const Page = styled.section`
+    background-color: ${Colors.pageBackground};
+    padding: 5px;
+`;
+
+const Main = styled.section`
+    width: 100%;
+    height: 99.4vh;
+    font-family: 'Roboto';
+`;
+
 const Content = styled.div`
     width: 100%;
     display: flex;
     align-items: flex-start;
 `;
 
-const Main = styled.section`
-    background-color: ${Colors.pageBackground};
-    width: 100%;
-    height: 99.4vh;
-    font-family: 'Roboto';
-`;
-
-const Page = styled.section`
-    background-color: ${Colors.white};
-    margin: 5px;
-`;
-
 export const UserProfile = createContext({});
 
 const MainPage: FC = () => {
-
-    // console.log("MainPageDidMounted")
 
     return (
         <Page>

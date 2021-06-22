@@ -1,6 +1,11 @@
-import { FC, useState } from "react";
+import { FC, useState, ChangeEvent } from "react";
+import useDropdown from 'react-dropdown-hook';
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { IState } from "../../../../../../reducers";
+import { IPostReducers } from "../../../../../../reducers/postReducers";
 import { Colors } from "../../../../../../styledHelpers/Colors";
+import Loading from "../../../../../Common/Loading";
 
 import Posts from './ResumeYourWorkPosts';
 
@@ -50,10 +55,54 @@ const SectionTitle = styled.div`
     margin-left: 12px;
 `;
 
-const ResumeYourWork : FC = () => {
+const RightBar = styled.div`
+    display: flex;
+`;
 
+const DropMenu = styled.div`
+	display: flex;
+    align-items: center;
+`;
+
+const DropMenuBtn = styled.button`
+	background: none;
+    color: ${Colors.textAccent};
+    display: flex;
+    align-items: center;
+    border-width: 0px;
+    cursor: pointer;
+`;
+
+const DropMenuIcn = styled.img`
+    margin: 2px 4px;
+`;
+
+export const Menu = styled.div`
+    position: absolute;
+	background: ${Colors.white};
+    margin: 2px;
+    width: 100px;
+    height: 200px;
+    z-index: 1;
+    border-radius: 0px 0px 4px 4px;
+    border-width: 1px;
+    border-color: ${Colors.accent};
+    border-style: solid;
+`;
+
+const ResumeYourWork : FC = () => {
+    const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
+    const {postsList} = useSelector<IState, IPostReducers>(state => ({
+        ...state.posts
+    }))
 
     const [filtred, setFiltred] = useState("");
+
+    if(postsList.length === 0)
+    return (
+        <Loading/>
+    )
 
     return (
         <Content>
@@ -64,10 +113,28 @@ const ResumeYourWork : FC = () => {
                     Resume your work
                 </SectionTitle>
 
-                <FilterBarDiv>
-                    <FilterInput placeholder="Filter by title..." onChange={(event) => {setFiltred(event.target.value)}}/> 
-                    <FilterIcn src={"/media/icons/search.svg"} />
-                </FilterBarDiv>
+                <RightBar>
+                    <FilterBarDiv>
+                        <FilterInput placeholder="Filter by title..." onChange={(event) => {setFiltred(event.target.value)}}/> 
+                        <FilterIcn src={"/media/icons/search.svg"} />
+                    </FilterBarDiv>
+                    <DropMenu>
+                        <div ref={wrapperRef}>
+
+                            <DropMenuBtn onClick={toggleDropdown}>
+                                <DropMenuIcn src="/media/icons/cog.svg"></DropMenuIcn>
+                                Followed
+                                <DropMenuIcn src="/media/icons/arrow-down.svg" alt=""/>
+                            </DropMenuBtn>
+
+                            {dropdownOpen &&
+                                <Menu>
+                                    
+                                </Menu> 
+                            }
+                        </div>
+                    </DropMenu>
+                </RightBar>
 
 
             </ResumeYourWorkTopBar>

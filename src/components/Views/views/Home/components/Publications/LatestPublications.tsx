@@ -30,7 +30,7 @@ const LatestPublications : FC = () => {
             <Title/>
             
             {postsList
-                .filter((element: IPost) => 0 < element.id && element.id <= 3)
+                .filter((element: IPost) => 2 < element.id && element.id <= 3)
 	            .map((post: IPost) => <Post post={post} updateDate="7 jan 2020" updateBy={1} key={post.id}/>)
             }
 

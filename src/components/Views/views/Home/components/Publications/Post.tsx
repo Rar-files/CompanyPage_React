@@ -5,6 +5,8 @@ import IPost from "../../../../../../interfaces/IPost";
 import { IState } from '../../../../../../reducers';
 import { IPhotoReducers } from '../../../../../../reducers/photoReducers';
 import { IUserReducers } from '../../../../../../reducers/userReducers';
+import { Colors } from '../../../../../../styledHelpers/Colors';
+import { fontSize } from '../../../../../../styledHelpers/FontSizes';
 
 import Loading from "../../../../../Common/Loading";
 
@@ -16,6 +18,7 @@ export interface IPostElement{
 
 const MainDiv = styled.div`
     display: flex;
+    width: 100%;
     height: 30px;
     justify-content: flex-start;
     align-items: center;
@@ -38,22 +41,29 @@ const Body = styled.span`
     width: 100%;
 `;
 
-const PostTools = styled.div`
+const PostInfo = styled.div`
+    margin-top: 4px;
     display: flex;
     width: 100%;
     justify-content: flex-start;
     align-items: center;
+    font-size: ${fontSize[12]};
+    color: ${Colors.comment};
 `;
 
 const UpdateTime = styled.span`
-
+    font-weight: bold;
 `;
 
 const User = styled.div`
     display: flex;
+    align-items: center;
 `;
 
 const UserImg = styled.img`
+    margin: 0px 6px;
+    width: 20px;
+    border-radius: 50%;
 `;
 
 
@@ -75,15 +85,15 @@ const Post : FC<IPostElement> = (props: IPostElement) => {
                     <Body>
                         {props.post.body}
                     </Body>
-                    <PostTools>
+                    <PostInfo>
                         <UpdateTime>
                             {props.updateDate}
                         </UpdateTime>
                         <User>
-                            <UserImg src={photosList[props.updateBy].url}/>
+                            <UserImg src={photosList[props.updateBy].thumbnailUrl}/>
                             {usersList[props.updateBy].name}
                         </User>
-                    </PostTools>
+                    </PostInfo>
                 </PostContent>
             </MainDiv>
         )

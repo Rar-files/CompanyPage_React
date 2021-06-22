@@ -21,14 +21,14 @@ const bounced = keyframes`
 `;
 
 const Bounce = styled.div`
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     margin: 2px;
     background-color: ${Colors.accent};
     display: inline-block;
     border-radius: 50%;
     animation-name: ${bounced};
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-iteration-count: infinite;
 `;
 

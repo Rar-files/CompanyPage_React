@@ -6,7 +6,7 @@ export const DropMenu = styled.div`
 	position: absolute;
 	margin: 0px;
 	margin-left: 55px;
-	z-index: 1;
+	z-index: 10;
 `;
 
 export const DropMenuBtn = styled.button`

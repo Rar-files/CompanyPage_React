@@ -6,6 +6,7 @@ import { PostTypes } from "../../../../../../assets/data/PostTypes";
 import IPost from "../../../../../../interfaces/IPost";
 import { IState } from "../../../../../../reducers";
 import { IPostReducers } from "../../../../../../reducers/postReducers";
+import { Colors } from "../../../../../../styledHelpers/Colors";
 
 import Post from './Post';
 
@@ -18,11 +19,30 @@ const PostsDiv = styled.div`
 `;
 
 const NavigateMenu = styled.div`
+    margin: 4px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: ${Colors.comment};
 `;
 
 const NavigateBtn = styled.div`
+    margin: 2px;
+    cursor: pointer;
+    color: ${Colors.textAccent};
+`;
 
+const PagesNumber = styled.div`
+    margin: 2px;
+    display: flex;
+    cursor: pointer;
+`;
+
+const TargetPage = styled.div`
+    margin: 0px 0px 0px 3px;
+    cursor: pointer;
+    color: ${Colors.textAccent};
 `;
 
 const ResumeYourWorkPosts : FC<IResumeYourWorkPosts> = (props: IResumeYourWorkPosts) => {
@@ -45,17 +65,25 @@ const ResumeYourWorkPosts : FC<IResumeYourWorkPosts> = (props: IResumeYourWorkPo
     else
         postsOnSite = 10;
 
-
     return (
+
         <PostsDiv>
             {list.slice(currentPageIndex*10, currentPageIndex*10+postsOnSite)
-	            .map((post: IPost) => <Post post={post} postType={PostTypes[post.id%3]} updateTime={new Date(2021,4,post.id%30+1)} companyName="Company" key={post.id}/>)}
+                .map((post: IPost) => <Post post={post} postType={PostTypes[post.id%3]} updateTime={new Date(2021,4,post.id%30+1)} companyName="Company" key={post.id}/>)}
             
             <NavigateMenu>
                 {0< currentPageIndex &&
                     <NavigateBtn onClick={() => setCurrentPageIndex(currentPageIndex => currentPageIndex-1)}>
-                        Prev
-                    </NavigateBtn>}
+                        Previous
+                    </NavigateBtn>
+                }
+                <PagesNumber>
+                    {0< currentPageIndex && `...${currentPageIndex},`}
+                    <TargetPage>
+                        {currentPageIndex+1}
+                    </TargetPage>
+                    {(list.length/10)-2 > currentPageIndex && `, ${currentPageIndex+2}...`}
+                </PagesNumber>
                 {(list.length/10)-2 > currentPageIndex &&
                     <NavigateBtn onClick={() => setCurrentPageIndex(currentPageIndex => currentPageIndex+1)}>
                         Next
@@ -64,6 +92,8 @@ const ResumeYourWorkPosts : FC<IResumeYourWorkPosts> = (props: IResumeYourWorkPo
             </NavigateMenu>
         </PostsDiv>
     );
+    
+
 }
 
 export default ResumeYourWorkPosts;
