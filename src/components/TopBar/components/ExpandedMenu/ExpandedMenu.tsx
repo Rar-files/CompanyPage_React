@@ -1,7 +1,7 @@
 import {ChangeEvent, FC, useEffect, useState} from 'react';
 import useDropdown from 'react-dropdown-hook';
 import MenuElement, {IMenuElement} from '../../../Common/MenuElement';
-import {PlatformData, WorkspacesData} from "../../../../assets/data/DropdownMenuData";
+import {PlatformData, WorkspacesData} from "../../../../assets/data/PagesData";
 import Account from './ExpandedMenuAccount';
 import {
 	DropMenu,
@@ -24,11 +24,11 @@ const ExpandedMenu: FC = () => {
 
 	let PlatformDataBufor = PlatformData
 		.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(filtred.toLowerCase()))
-		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName} key={e.id}/>);
+		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={e.srcImg} elementName={e.elementName} key={e.id}/>);
 
 	let WorkspacesDataBufor = WorkspacesData
 		.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(filtred.toLowerCase()))
-		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName} key={e.id}/>);
+		.map((e: IMenuElement) => <MenuElement href={e.href} srcImg={e.srcImg} elementName={e.elementName} key={e.id}/>);
 
 	let PlatformTitle;
 	if(!(PlatformDataBufor.length === 0))
@@ -47,7 +47,7 @@ const ExpandedMenu: FC = () => {
 		PlatformData.forEach((e) => {
 			if(e.href === path){
 				// eslint-disable-next-line react-hooks/exhaustive-deps
-				CurrentElement = <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>
+				CurrentElement = <MenuElement href={e.href} srcImg={e.srcImg} elementName={e.elementName}/>
 			}
 		});
 		WorkspacesData.forEach((e) => {

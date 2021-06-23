@@ -7,6 +7,7 @@ import { IPhotoReducers } from '../../../../../../reducers/photoReducers';
 import { IUserReducers } from '../../../../../../reducers/userReducers';
 import { Colors } from '../../../../../../styledHelpers/Colors';
 import { fontSize } from '../../../../../../styledHelpers/FontSizes';
+import {Link} from 'react-router-dom';
 
 import Loading from "../../../../../Common/Loading";
 
@@ -15,7 +16,26 @@ export interface IPostElement{
     updateDate?: string;
 }
 
-const MainDiv = styled.div`
+const ElementLink = styled(Link)`
+    &:link{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+    &:visited{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+    &:hover{
+        text-decoration: none;
+        color: ${Colors.textAccent};
+    }
+    &:active{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+`;
+
+const Content = styled.div`
     margin: 8px 0px;
     display: flex;
     width: 100%;
@@ -43,6 +63,7 @@ const Body = styled.span`
     width: 100%;
     color: ${Colors.accent};
     text-transform:capitalize;
+    font-size: ${fontSize[14]};
 `;
 
 const PostInfo = styled.div`
@@ -83,7 +104,8 @@ const Post : FC<IPostElement> = (props: IPostElement) => {
 
     try{
     return (
-            <MainDiv>
+        <ElementLink to={`/publications?=${props.post.id}`}>
+            <Content>
                 <Photo src={photosList[props.post.id].url}/>
                 <PostContent>
                     <Body>
@@ -99,7 +121,8 @@ const Post : FC<IPostElement> = (props: IPostElement) => {
                         </User>
                     </PostInfo>
                 </PostContent>
-            </MainDiv>
+            </Content>
+        </ElementLink>
         )
     }
     catch{

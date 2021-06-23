@@ -1,22 +1,43 @@
 import {FC} from 'react';
 import { useSelector } from 'react-redux';
 import styled from "styled-components";
-import { IPostType } from '../../../../../../assets/data/PostTypes';
 import IPost from "../../../../../../interfaces/IPost";
 import { IState } from '../../../../../../reducers';
 import { IUserReducers } from '../../../../../../reducers/userReducers';
 import { Colors } from '../../../../../../styledHelpers/Colors';
 import { fontSize } from '../../../../../../styledHelpers/FontSizes';
+import {Link} from 'react-router-dom';
+
 import Loading from '../../../../../Common/Loading';
+import { IMenuElement } from '../../../../../Common/MenuElement';
 
 export interface IPostElement{
     post: IPost;
-    postType: IPostType;
+    postType: IMenuElement;
     companyName: string;
     updateDate?: Date;
 }
 
-const Post = styled.div`
+const ElementLink = styled(Link)`
+    &:link{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+    &:visited{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+    &:hover{
+        text-decoration: none;
+        color: ${Colors.textAccent};
+    }
+    &:active{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+`;
+
+const Content = styled.div`
     padding: 2px 8px;
     margin-top: 6px;
     display: flex;
@@ -74,7 +95,7 @@ const Seperator = styled.div`
     border-radius: 50%;
 `;
 
-const PostElement : FC<IPostElement> = (props: IPostElement) => {
+const Post : FC<IPostElement> = (props: IPostElement) => {
 
     const TimeFormater = new Intl.RelativeTimeFormat('en', { style: 'narrow' });
 
@@ -85,36 +106,38 @@ const PostElement : FC<IPostElement> = (props: IPostElement) => {
 
     try{
         return (
-            <Post>
-                <Title>
-                    {props.post.title}
-                </Title>
+            <ElementLink to={`/entities?=${props.post.id}`}>
+                <Content>
+                    <Title>
+                        {props.post.title}
+                    </Title>
 
-                <Body>
-                    {props.post.body}
-                </Body>
+                    <Body>
+                        {props.post.body}
+                    </Body>
 
-                <PostTools>
-                    <PostToolsConttentBlock>
-                        {props.companyName}
-                    </PostToolsConttentBlock>
+                    <PostTools>
+                        <PostToolsConttentBlock>
+                            {props.companyName}
+                        </PostToolsConttentBlock>
 
-                    <Seperator/>
+                        <Seperator/>
 
-                    <PostToolsConttentBlock>
-                        <TypeIcon src={props.postType.icnSrc}/>
-                        {props.postType.typeName}
-                    </PostToolsConttentBlock>
+                        <PostToolsConttentBlock>
+                            <TypeIcon src={props.postType.srcImg}/>
+                            {props.postType.elementName}
+                        </PostToolsConttentBlock>
 
-                    <Seperator/>
+                        <Seperator/>
 
-                    <PostComment>
-                        {"Updated"}
-                        { (props.updateDate !== undefined) ? " " +  TimeFormater.format(Math.round((props.updateDate.getTime() - Date.now()) / (1000 * 3600 * 24)), 'days') : ""}
-                        { (usersList[props.post.userId].name !== undefined) ? " by " + usersList[props.post.userId].name : ""}
-                    </PostComment>
-                </PostTools>
-            </Post>
+                        <PostComment>
+                            {"Updated"}
+                            { (props.updateDate !== undefined) ? " " +  TimeFormater.format(Math.round((props.updateDate.getTime() - Date.now()) / (1000 * 3600 * 24)), 'days') : ""}
+                            { (usersList[props.post.userId].name !== undefined) ? " by " + usersList[props.post.userId].name : ""}
+                        </PostComment>
+                    </PostTools>
+                </Content>
+            </ElementLink>
         )
     }
     catch{
@@ -122,4 +145,4 @@ const PostElement : FC<IPostElement> = (props: IPostElement) => {
     }
 }
 
-export default PostElement;
+export default Post;

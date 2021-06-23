@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { PostTypes } from "../../../../../../assets/data/PostTypes";
+import { WorkspacesData } from "../../../../../../assets/data/PagesData";
 import IPost from "../../../../../../interfaces/IPost";
 import { IState } from "../../../../../../reducers";
 import { IPostReducers } from "../../../../../../reducers/postReducers";
@@ -39,17 +40,17 @@ const Workspaces : FC = () => {
 
     try{
         return (
-        <Content>
-            <SectionTitle>
-                Workspaces
-            </SectionTitle>
-            <Posts>
-                {postsList
-                    .slice(0, 3)
-                    .map((post: IPost) => <Post post={post} updateDate={new Date(2021,4,post.id%30+1)} postType={PostTypes[post.id%3]} usersCount={(post.id*post.id)%100} key={post.id}/>)
-                }
-            </Posts>
-        </Content>
+            <Content>
+                <SectionTitle>
+                    Workspaces
+                </SectionTitle>
+                <Posts>
+                    {postsList
+                        .slice(0, 3)
+                        .map((post: IPost) => <Post post={post} updateDate={new Date(2021,4,post.id%30+1)} postType={WorkspacesData[post.id%5]} usersCount={(post.id*post.id)%100} key={post.id}/>)
+                    }
+                </Posts>
+            </Content>
         );
     }
     catch{

@@ -4,13 +4,33 @@ import styled from "styled-components";
 import { IState } from "../../../../../../reducers";
 import { IPhotoReducers } from "../../../../../../reducers/photoReducers";
 import { IUserReducers } from "../../../../../../reducers/userReducers";
+import {IPostElement} from "./Post";
 import { Colors } from "../../../../../../styledHelpers/Colors";
 import { fontSize } from "../../../../../../styledHelpers/FontSizes";
+import {Link} from 'react-router-dom';
+
 import Loading from "../../../../../Common/Loading";
 
-import {IPostElement} from "./Post";
+const ElementLink = styled(Link)`
+    &:link{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+    &:visited{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+    &:hover{
+        text-decoration: none;
+        color: ${Colors.textAccent};
+    }
+    &:active{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+`;
 
-const MainDiv = styled.div`
+const Content = styled.div`
     display: flex;
     height: 100%;
     width: 280px;
@@ -79,23 +99,25 @@ const MainPost : FC<IPostElement> = (props: IPostElement) => {
 
     try{
         return (
-            <MainDiv>
-                <Picture src={photosList[props.post.id].url}/>
-                <PostContent>
-                    <Body>
-                        {props.post.body}
-                    </Body>
-                    <PostInfo>
-                        <UpdateTime>
-                            {props.updateDate}
-                        </UpdateTime>
-                        <User>
-                            <UserImg src={photosList[props.post.userId].thumbnailUrl}/>
-                            {usersList[props.post.userId].name}
-                        </User>
-                    </PostInfo>
-                </PostContent>
-            </MainDiv>
+            <ElementLink to={`/publications?=${props.post.id}`}>
+                <Content>
+                    <Picture src={photosList[props.post.id].url}/>
+                    <PostContent>
+                        <Body>
+                            {props.post.body}
+                        </Body>
+                        <PostInfo>
+                            <UpdateTime>
+                                {props.updateDate}
+                            </UpdateTime>
+                            <User>
+                                <UserImg src={photosList[props.post.userId].thumbnailUrl}/>
+                                {usersList[props.post.userId].name}
+                            </User>
+                        </PostInfo>
+                    </PostContent>
+                </Content>
+            </ElementLink>
         );
     }
     catch{

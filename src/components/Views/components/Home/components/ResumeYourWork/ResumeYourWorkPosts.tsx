@@ -2,7 +2,7 @@
 import { FC, useState} from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { PostTypes } from "../../../../../../assets/data/PostTypes";
+import { WorkspacesData } from "../../../../../../assets/data/PagesData"
 import IPost from "../../../../../../interfaces/IPost";
 import { IState } from "../../../../../../reducers";
 import { IPostReducers } from "../../../../../../reducers/postReducers";
@@ -69,7 +69,7 @@ const ResumeYourWorkPosts : FC<IResumeYourWorkPosts> = (props: IResumeYourWorkPo
 
         <PostsDiv>
             {list.slice(currentPageIndex*10, currentPageIndex*10+postsOnSite)
-                .map((post: IPost) => <Post post={post} postType={PostTypes[post.id%3]} updateDate={new Date(2021,4,post.id%30+1)} companyName="Company" key={post.id}/>)}
+                .map((post: IPost) => <Post post={post} postType={WorkspacesData[post.id%5]} updateDate={new Date(2021,4,post.id%30+1)} companyName="Company" key={post.id}/>)}
             
             <NavigateMenu>
                 {0< currentPageIndex &&
