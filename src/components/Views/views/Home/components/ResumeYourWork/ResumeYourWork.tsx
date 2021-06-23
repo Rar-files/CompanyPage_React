@@ -1,10 +1,11 @@
-import { FC, useState, ChangeEvent } from "react";
+import { FC, useState } from "react";
 import useDropdown from 'react-dropdown-hook';
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { IState } from "../../../../../../reducers";
 import { IPostReducers } from "../../../../../../reducers/postReducers";
 import { Colors } from "../../../../../../styledHelpers/Colors";
+import { fontSize } from "../../../../../../styledHelpers/FontSizes";
 import Loading from "../../../../../Common/Loading";
 
 import Posts from './ResumeYourWorkPosts';
@@ -50,7 +51,7 @@ const FilterIcn = styled.img`
 `;
 
 const SectionTitle = styled.div`
-    font-weight: bold;
+    font-size: ${fontSize[20]};
     color: ${Colors.title};
     margin-left: 12px;
 `;

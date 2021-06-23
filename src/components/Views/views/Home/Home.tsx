@@ -18,7 +18,7 @@ const Home : FC = () => {
         <HomeDiv>
             <Publications/>
             <Workspaces/>
-            {/* <ResumeYourWork/> */}
+            <ResumeYourWork/>
         </HomeDiv>
     );
 }

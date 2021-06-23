@@ -25,7 +25,7 @@ const Publications : FC = () => {
 
     return (
         <MainDiv>
-            <MainPost post={postsList[1]} updateDate="7 jan 2020" updateBy={1}/>
+            <MainPost post={postsList[1]} updateDate="7 jan 2020"/>
             <LatestPublications/>
         </MainDiv>
     );

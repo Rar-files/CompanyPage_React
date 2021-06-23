@@ -13,7 +13,7 @@ export interface IPostElement{
     post: IPost;
     postType: IPostType;
     companyName: string;
-    updateTime?: Date;
+    updateDate?: Date;
 }
 
 const Post = styled.div`
@@ -110,7 +110,7 @@ const PostElement : FC<IPostElement> = (props: IPostElement) => {
 
                     <PostComment>
                         {"Updated"}
-                        { (props.updateTime !== undefined) ? " " +  TimeFormater.format(Math.round((props.updateTime.getTime() - Date.now()) / (1000 * 3600 * 24)), 'days') : ""}
+                        { (props.updateDate !== undefined) ? " " +  TimeFormater.format(Math.round((props.updateDate.getTime() - Date.now()) / (1000 * 3600 * 24)), 'days') : ""}
                         { (usersList[props.post.userId].name !== undefined) ? " by " + usersList[props.post.userId].name : ""}
                     </PostComment>
                 </PostTools>

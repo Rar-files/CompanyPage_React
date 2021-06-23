@@ -13,32 +13,36 @@ import Loading from "../../../../../Common/Loading";
 export interface IPostElement{
     post: IPost;
     updateDate?: string;
-    updateBy: number;
 }
 
 const MainDiv = styled.div`
+    margin: 8px 0px;
     display: flex;
     width: 100%;
-    height: 30px;
+    height: 60px;
     justify-content: flex-start;
     align-items: center;
 `;
 
 const Photo = styled.img`
-    width: 30px;
+    width: 60px;
     height: auto;
 `;
 
 const PostContent = styled.div`
+    margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 100px;
+    flex-wrap:wrap;
+    width: 100%;
 `;
 
 const Body = styled.span`
     width: 100%;
+    color: ${Colors.accent};
+    text-transform:capitalize;
 `;
 
 const PostInfo = styled.div`
@@ -52,12 +56,12 @@ const PostInfo = styled.div`
 `;
 
 const UpdateTime = styled.span`
-    font-weight: bold;
 `;
 
 const User = styled.div`
     display: flex;
     align-items: center;
+    font-weight: bold;
 `;
 
 const UserImg = styled.img`
@@ -90,8 +94,8 @@ const Post : FC<IPostElement> = (props: IPostElement) => {
                             {props.updateDate}
                         </UpdateTime>
                         <User>
-                            <UserImg src={photosList[props.updateBy].thumbnailUrl}/>
-                            {usersList[props.updateBy].name}
+                            <UserImg src={photosList[props.post.userId].thumbnailUrl}/>
+                            {usersList[props.post.userId].name}
                         </User>
                     </PostInfo>
                 </PostContent>

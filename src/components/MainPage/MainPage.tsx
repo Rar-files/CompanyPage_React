@@ -7,6 +7,7 @@ import LeftMenu from "../LeftMenu/LeftMenu";
 import Views from "../Views/Views"
 
 const Page = styled.section`
+    height: 160vh;
     background-color: ${Colors.pageBackground};
     padding: 5px;
 `;

@@ -1,4 +1,4 @@
-import IUser, {emptyUser} from '../interfaces/IUser';
+import IUser from '../interfaces/IUser';
 import * as actionTypes from "../app/actions/actionTypes/userTypes";
 
 export interface IUserReducers {

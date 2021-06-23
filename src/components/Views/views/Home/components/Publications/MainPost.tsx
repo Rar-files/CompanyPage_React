@@ -90,8 +90,8 @@ const MainPost : FC<IPostElement> = (props: IPostElement) => {
                             {props.updateDate}
                         </UpdateTime>
                         <User>
-                            <UserImg src={photosList[props.updateBy].thumbnailUrl}/>
-                            {usersList[props.updateBy].name}
+                            <UserImg src={photosList[props.post.userId].thumbnailUrl}/>
+                            {usersList[props.post.userId].name}
                         </User>
                     </PostInfo>
                 </PostContent>

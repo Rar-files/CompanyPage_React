@@ -1,7 +1,6 @@
 import {FC} from 'react';
 import styled from 'styled-components';
 import {Colors} from "../../../styledHelpers/Colors";
-import { fontSize } from '../../../styledHelpers/FontSizes';
 
 import MenuElement from '../../Common/MenuElement';
 

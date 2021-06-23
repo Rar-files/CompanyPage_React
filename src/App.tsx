@@ -28,7 +28,7 @@ const App: FC = () => {
                 families: ['Roboto']
             }
         })
-    }, []);
+    }, [dispatch]);
 
     return (
         <Router>
