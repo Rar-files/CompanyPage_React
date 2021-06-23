@@ -20,7 +20,7 @@ import {
 const ExpandedMenu: FC = () => {
     const [wrapperRef, dropdownOpen, toggleDropdown, closeDropdown] = useDropdown();
 	const [filtred, setFiltred] = useState("");
-	const [currentPath, setCurrentPath] = useState("");
+	const [currentPath, setCurrentPath] = useState("/");
 
 	let PlatformDataBufor = PlatformData
 		.filter((element: IMenuElement) => element.elementName.toLowerCase().includes(filtred.toLowerCase()))
@@ -38,10 +38,6 @@ const ExpandedMenu: FC = () => {
 	if(!(WorkspacesDataBufor.length === 0))
 		WorkspacesTitle = <MenuSectionName>Workspaces</MenuSectionName>;
 
-	useEffect(() => {
-		setCurrentPath(window.location.pathname);
-	}, [])
-
 	function getElementByPath(path : string){
 		let CurrentElement;
 		PlatformData.forEach((e) => {
@@ -53,11 +49,15 @@ const ExpandedMenu: FC = () => {
 		WorkspacesData.forEach((e) => {
 			if(e.href === path){
 				// eslint-disable-next-line react-hooks/exhaustive-deps
-				CurrentElement = <MenuElement href={e.href} srcImg={"/media/icons/" + e.srcImg} elementName={e.elementName}/>
+				CurrentElement = <MenuElement href={e.href} srcImg={e.srcImg} elementName={e.elementName}/>
 			}
 		});
 		return CurrentElement;
 	}
+
+	useEffect(() => {
+		setCurrentPath(window.location.pathname);
+	}, [toggleDropdown])
 
 	return (
 		<DropMenu>

@@ -21,14 +21,14 @@ const Views : FC = () =>{
     return(
         <View>
             <Switch>
-                <Route path="/entities">
+                <Route path="/entities" exact>
                     <Entities/>
+                </Route>
+                <Route path="/publications" exact>
+                    <Publications/>
                 </Route>
                 <Route path="/">
                     <Home/>
-                </Route>
-                <Route path="/publications">
-                    <Publications/>
                 </Route>
             </Switch>
         </View>
