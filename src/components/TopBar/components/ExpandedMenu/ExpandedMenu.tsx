@@ -40,6 +40,11 @@ const ExpandedMenu: FC = () => {
 
 	function getElementByPath(path : string){
 		let CurrentElement;
+
+		if(path[1] === "u" && path[2] === "s" && path[3] === "e" && path[4] === "r"){
+			path = "/people"
+		}
+
 		PlatformData.forEach((e) => {
 			if(e.href === path){
 				// eslint-disable-next-line react-hooks/exhaustive-deps

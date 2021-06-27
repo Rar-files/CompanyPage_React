@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { WorkspacesData } from "../../../../../../assets/data/PagesData";
 import IPost from "../../../../../../interfaces/IPost";

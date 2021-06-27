@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import IUser from "../../../../../interfaces/IUser";
 import { IState } from "../../../../../reducers";
 import { IUserReducers } from "../../../../../reducers/userReducers";
-import { Colors } from "../../../../../styledHelpers/Colors";
 import Loading from "../../../../Common/Loading";
 
 import Person from './Person';

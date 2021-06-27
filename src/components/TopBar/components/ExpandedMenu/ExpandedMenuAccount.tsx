@@ -68,7 +68,7 @@ const Account : FC = () => {
                 <Name>
                     {usersList[userID].name}
                 </Name>
-                <LinkBIO to={"/user?"+usersList[userID].id}>
+                <LinkBIO to={"/user/"+usersList[userID].id}>
                     See profile
                 </LinkBIO>
             </AccountData>

@@ -64,15 +64,29 @@ const Title = styled.span`
     overflow: hidden;
 `;
 
-const Body = styled.span`
-    width: 132px;
-    height: 20px;
-    margin: 8px 4px;;
+const Body = styled.div`
+    width: 420px;
+    height: 40px;
+    margin: 6px 4px;
+    display: flex;
+    flex-wrap: wrap;
+`;
+
+const BodyElement = styled.div`
+    width: 40%;
     font-size: ${fontSize[10]};
     color: ${Colors.comment};
     line-height: normal;
     text-overflow: ellipsis;
     overflow: hidden;
+`;
+
+const Seperator = styled.div`
+    height: 4px;
+    width: 4px;
+    margin: 4px 10px;
+    background-color: ${Colors.accent};
+    border-radius: 50%;
 `;
 
 const Person : FC<IPersonElement> = (props: IPersonElement) => {
@@ -94,7 +108,26 @@ const Person : FC<IPersonElement> = (props: IPersonElement) => {
                         </Title>
 
                         <Body>
-                            {}
+                            <BodyElement>
+                                {`${props.user.address.street} `}
+                                {props.user.address.suite}
+                            </BodyElement>
+
+                            <Seperator/>
+
+                            <BodyElement>
+                                {props.user.email}
+                            </BodyElement>
+
+                            <BodyElement>
+                                {props.user.address.city}
+                            </BodyElement>
+
+                            <Seperator/>
+
+                            <BodyElement>
+                                {props.user.phone}
+                            </BodyElement>
                         </Body>
                     </PersonData>
                 </Content>

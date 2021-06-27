@@ -1,4 +1,5 @@
 import {FC} from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {Colors} from "../../../styledHelpers/Colors";
 
@@ -26,16 +27,23 @@ const CircleButton = styled(HomeButton)`
 const RightManager: FC = () => {
     return(
         <Content>
-            <HomeButton>
-                <img src="./media/icons/house.svg" alt=""/>
-            </HomeButton>
-            <CircleButton>
-                <img src="./media/icons/comments.svg" alt=""/>
-            </CircleButton>
-            
-            <CircleButton>
-                <img src="./media/icons/bell.svg" alt=""/>
-            </CircleButton>
+            <Link to="/">
+                <HomeButton>
+                    <img src="./media/icons/house.svg" alt=""/>
+                </HomeButton>
+            </Link>
+
+            <Link to="/">
+                <CircleButton>
+                    <img src="./media/icons/comments.svg" alt=""/>
+                </CircleButton>
+            </Link>
+
+            <Link to="/">
+                <CircleButton>
+                    <img src="./media/icons/bell.svg" alt=""/>
+                </CircleButton>
+            </Link>
         </Content>
     )
 }

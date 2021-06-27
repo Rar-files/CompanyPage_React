@@ -10,10 +10,18 @@ const Content = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
+    justify-content: center;
+`;
+
+const UsersList = styled.div`
+    height: 100%;
+    width: 502px;
+    display: flex;
     flex-direction: column;
 `;
 
 const TopBar = styled.div`
+    margin: 2px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,23 +73,22 @@ const People : FC = () => {
     try{
         return (
             <Content>
+                <UsersList>  
+                    <TopBar>
+                        <SectionTitle>
+                            People
+                        </SectionTitle>
 
-                <TopBar>
+                        <RightBar>
+                            <FilterBarDiv>
+                                <FilterInput placeholder="Filter by name..." onChange={(event) => {setFiltred(event.target.value)}}/> 
+                                <FilterIcn src={"/media/icons/search.svg"} />
+                            </FilterBarDiv>
+                        </RightBar>
+                    </TopBar>
 
-                    <SectionTitle>
-                        People
-                    </SectionTitle>
-
-                    <RightBar>
-                        <FilterBarDiv>
-                            <FilterInput placeholder="Filter by name..." onChange={(event) => {setFiltred(event.target.value)}}/> 
-                            <FilterIcn src={"/media/icons/search.svg"} />
-                        </FilterBarDiv>
-                    </RightBar>
-
-                </TopBar>
-
-                <PeopleList filterValue={filtred}/>
+                    <PeopleList filterValue={filtred}/>
+                </UsersList>
             </Content>
         );
     }
