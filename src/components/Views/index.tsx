@@ -4,10 +4,12 @@ import {
     Route,
   } from "react-router-dom";
 import styled from 'styled-components';
-import Entities from './components/Entities/Entities';
+import Entities from './components/Entities';
 
-import Home from "./components/Home/Home";
-import Publications from './components/Publications/Publications';
+import Home from "./components/Home";
+import User from "./components/User";
+import People from "./components/People";
+import Publications from './components/Publications';
 
 const View = styled.div`
     margin-top: 20px;
@@ -26,6 +28,12 @@ const Views : FC = () =>{
                 </Route>
                 <Route path="/publications" exact>
                     <Publications/>
+                </Route>
+                <Route path="/people" exact>
+                    <People/>
+                </Route>
+                <Route path="/user/:id" exact>
+                    <User/>
                 </Route>
                 <Route path="/">
                     <Home/>

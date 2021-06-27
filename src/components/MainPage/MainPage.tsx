@@ -4,7 +4,7 @@ import {Colors} from "../../styledHelpers/Colors";
 
 import TopBar from "../TopBar/TopBar";
 import LeftMenu from "../LeftMenu/LeftMenu";
-import Views from "../Views/Views"
+import Views from "../Views"
 
 const Page = styled.section`
     height: 160vh;

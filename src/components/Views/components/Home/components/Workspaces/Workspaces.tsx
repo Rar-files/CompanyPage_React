@@ -15,7 +15,6 @@ import Post from "./Post";
 const Content = styled.div`
     margin: 15px 0px;
     width: 100%;
-    background-color: #dab3b3;
     overflow: hidden;
 `;
 
@@ -27,10 +26,27 @@ const SectionTitle = styled.div`
 
 const Posts = styled.div`
     width: 100%;
+    height: 210px;
     max-width: calc(93vw - 190px);
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
+ 
+    &::-webkit-scrollbar-track {
+    background: none; 
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: ${Colors.comment}; 
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+    background: ${Colors.accent}
+    }
 `;
 
 const Workspaces : FC = () => {
@@ -46,7 +62,6 @@ const Workspaces : FC = () => {
                 </SectionTitle>
                 <Posts>
                     {postsList
-                        .slice(0, 3)
                         .map((post: IPost) => <Post post={post} updateDate={new Date(2021,4,post.id%30+1)} postType={WorkspacesData[post.id%5]} usersCount={(post.id*post.id)%100} key={post.id}/>)
                     }
                 </Posts>

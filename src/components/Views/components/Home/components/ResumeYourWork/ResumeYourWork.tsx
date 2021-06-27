@@ -137,7 +137,6 @@ const ResumeYourWork : FC = () => {
                     </DropMenu>
                 </RightBar>
 
-
             </ResumeYourWorkTopBar>
 
             <Posts filterValue={filtred}/>

@@ -1,5 +1,6 @@
 import {FC} from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IState } from '../../../reducers';
 import { IPhotoReducers } from '../../../reducers/photoReducers';
@@ -21,6 +22,25 @@ const Content = styled.div`
 const UserImage = styled.img`
     border-radius: 30px;
     width: 50px;
+`;
+
+const UserLink = styled(Link)`
+    &:link{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+    &:visited{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
+    &:hover{
+        text-decoration: none;
+        color: ${Colors.textAccent};
+    }
+    &:active{
+        text-decoration: none;
+        color: ${Colors.accent};
+    }
 `;
 
 const UserName = styled.p`
@@ -49,7 +69,9 @@ const User : FC = () => {
         return(
         <Content>
             <UserImage src={photosList[userID].url} alt="Img"></UserImage>
-            <UserName>{usersList[userID].name}</UserName>
+            <UserLink to={`/user/${userID}`}>
+                <UserName>{usersList[userID].name}</UserName>
+            </UserLink>
             <UserDescription>{usersList[userID].company.name}</UserDescription>
         </Content>
         )

@@ -14,7 +14,7 @@ import {
 	MenuSectionName,
 	AccountSection,
 	MenuDataTitle
-} from './ExpandedMenuStyled';
+} from './ExpandedMenu.styled';
 
 
 const ExpandedMenu: FC = () => {
